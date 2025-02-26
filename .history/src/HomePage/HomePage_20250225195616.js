@@ -26,7 +26,7 @@ function HomePage() {
 
     const fetchData = async () => {
         
-        axios.get('http://localhost:3001/budget')
+        axios.get('http://localhost:3001/api/budget')
         .then( (res) => {
             for (var i = 0; i < res.data.myBudget.length; i++) {
                 dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
@@ -37,17 +37,15 @@ function HomePage() {
             createPieChart();
             donutChart(res.data.myBudget);
         } )
-        .then(response => console.log(response.data))
         .catch( (err) => {
             console.log( err );
         })
       };
 
-      useEffect(() => {
-        console.log("Fetching data...");
+    useEffect(() => {
+        console.log("useEffect.!");
         fetchData();
-    }, [fetchData]); // Only include this if fetchData depends on props/state.
-    
+    }, []);
 
     function createPieChart(){
         var ctx = document.getElementById("myChart").getContext("2d");

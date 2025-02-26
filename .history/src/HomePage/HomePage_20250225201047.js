@@ -37,7 +37,6 @@ function HomePage() {
             createPieChart();
             donutChart(res.data.myBudget);
         } )
-        .then(response => console.log(response.data))
         .catch( (err) => {
             console.log( err );
         })

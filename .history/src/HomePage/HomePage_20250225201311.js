@@ -26,7 +26,7 @@ function HomePage() {
 
     const fetchData = async () => {
         
-        axios.get('http://localhost:3001/budget')
+        axios.get('http://localhost:3000/budget')
         .then( (res) => {
             for (var i = 0; i < res.data.myBudget.length; i++) {
                 dataSource.datasets[0].data[i] = res.data.myBudget[i].budget;
@@ -37,7 +37,6 @@ function HomePage() {
             createPieChart();
             donutChart(res.data.myBudget);
         } )
-        .then(response => console.log(response.data))
         .catch( (err) => {
             console.log( err );
         })
